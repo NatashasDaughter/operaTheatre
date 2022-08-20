@@ -3,12 +3,11 @@ package buem.zui.summerschooltheater.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Document
-public class Repertoire {
+public class WorkSchedule {
     @Id
     private String id;
     private String name;
@@ -16,36 +15,33 @@ public class Repertoire {
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
 
-    private String title;
-    private String author;
-    private int durationInMinutes;
-    private LocalDate dateOfPremier;
-    private int budget;
+    private Troupe soloist;
+    private Character character;
+    private Affiche performance;
+    private boolean isMainRole;
 
-    public Repertoire() {
+    public WorkSchedule() {
     }
 
-    public Repertoire(String name, String description, String title, String author, int durationInMinutes, LocalDate dateOfPremier, int budget) {
+    public WorkSchedule(String name, String description, Troupe soloist, Character character, Affiche performance, boolean isMainRole) {
         this.name = name;
         this.description = description;
-        this.title = title;
-        this.author = author;
-        this.durationInMinutes = durationInMinutes;
-        this.dateOfPremier = dateOfPremier;
-        this.budget = budget;
+        this.soloist = soloist;
+        this.character = character;
+        this.performance = performance;
+        this.isMainRole = isMainRole;
     }
 
-    public Repertoire(String id, String name, String description, LocalDateTime createAt, LocalDateTime updateAt, String title, String author, int durationInMinutes, LocalDate dateOfPremier, int budget) {
+    public WorkSchedule(String id, String name, String description, LocalDateTime createAt, LocalDateTime updateAt, Troupe soloist, Character character, Affiche performance, boolean isMainRole) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.createAt = createAt;
         this.updateAt = updateAt;
-        this.title = title;
-        this.author = author;
-        this.durationInMinutes = durationInMinutes;
-        this.dateOfPremier = dateOfPremier;
-        this.budget = budget;
+        this.soloist = soloist;
+        this.character = character;
+        this.performance = performance;
+        this.isMainRole = isMainRole;
     }
 
     public String getId() {
@@ -88,51 +84,43 @@ public class Repertoire {
         this.updateAt = updateAt;
     }
 
-    public String getTitle() {
-        return title;
+    public Troupe getSoloist() {
+        return soloist;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSoloist(Troupe soloist) {
+        this.soloist = soloist;
     }
 
-    public String getAuthor() {
-        return author;
+    public Character getCharacter() {
+        return character;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setCharacter(Character character) {
+        this.character = character;
     }
 
-    public int getDurationInMinutes() {
-        return durationInMinutes;
+    public Affiche getPerformance() {
+        return performance;
     }
 
-    public void setDurationInMinutes(int durationInMinutes) {
-        this.durationInMinutes = durationInMinutes;
+    public void setPerformance(Affiche performance) {
+        this.performance = performance;
     }
 
-    public LocalDate getDateOfPremier() {
-        return dateOfPremier;
+    public boolean isMainRole() {
+        return isMainRole;
     }
 
-    public void setDateOfPremier(LocalDate dateOfPremier) {
-        this.dateOfPremier = dateOfPremier;
-    }
-
-    public int getBudget() {
-        return budget;
-    }
-
-    public void setBudget(int budget) {
-        this.budget = budget;
+    public void setMainRole(boolean mainRole) {
+        isMainRole = mainRole;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Repertoire that = (Repertoire) o;
+        WorkSchedule that = (WorkSchedule) o;
         return getId().equals(that.getId());
     }
 
@@ -143,17 +131,16 @@ public class Repertoire {
 
     @Override
     public String toString() {
-        return "Repertoire{" +
+        return "WorkSchedule{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", createAt=" + createAt +
                 ", updateAt=" + updateAt +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", durationInMinutes=" + durationInMinutes +
-                ", dateOfPremier=" + dateOfPremier +
-                ", budget=" + budget +
+                ", soloist=" + soloist +
+                ", character=" + character +
+                ", performance=" + performance +
+                ", isMainRole=" + isMainRole +
                 '}';
     }
 }

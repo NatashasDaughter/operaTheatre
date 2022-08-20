@@ -5,8 +5,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+
 @Document
-public class Character {
+public class Affiche {
     @Id
     private String id;
     private String name;
@@ -15,29 +16,29 @@ public class Character {
     private LocalDateTime updateAt;
 
     private Repertoire opera;
-    private String roleName;
-    private OperaVoice voice;
+    private  LocalDateTime dateAndTime;
+    private int ticketPrice;
 
-    public Character() {
+    public Affiche() {
     }
 
-    public Character(String name, String description, Repertoire opera, String roleName, OperaVoice voice) {
+    public Affiche(String name, String description, Repertoire opera, LocalDateTime dateAndTime, int ticketPrice) {
         this.name = name;
         this.description = description;
         this.opera = opera;
-        this.roleName = roleName;
-        this.voice = voice;
+        this.dateAndTime = dateAndTime;
+        this.ticketPrice = ticketPrice;
     }
 
-    public Character(String id, String name, String description, LocalDateTime createAt, LocalDateTime updateAt, Repertoire opera, String roleName, OperaVoice voice) {
+    public Affiche(String id, String name, String description, LocalDateTime createAt, LocalDateTime updateAt, Repertoire opera, LocalDateTime dateAndTime, int ticketPrice) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.opera = opera;
-        this.roleName = roleName;
-        this.voice = voice;
+        this.dateAndTime = dateAndTime;
+        this.ticketPrice = ticketPrice;
     }
 
     public String getId() {
@@ -46,22 +47,6 @@ public class Character {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public LocalDateTime getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
-    }
-
-    public LocalDateTime getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(LocalDateTime updateAt) {
-        this.updateAt = updateAt;
     }
 
     public String getName() {
@@ -80,6 +65,22 @@ public class Character {
         this.description = description;
     }
 
+    public LocalDateTime getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
+    }
+
+    public LocalDateTime getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
+    }
+
     public Repertoire getOpera() {
         return opera;
     }
@@ -88,46 +89,46 @@ public class Character {
         this.opera = opera;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public LocalDateTime getDateAndTime() {
+        return dateAndTime;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setDateAndTime(LocalDateTime dateAndTime) {
+        this.dateAndTime = dateAndTime;
     }
 
-    public OperaVoice getVoice() {
-        return voice;
+    public int getTicketPrice() {
+        return ticketPrice;
     }
 
-    public void setVoice(OperaVoice voice) {
-        this.voice = voice;
+    public void setTicketPrice(int ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Character character = (Character) o;
-        return id.equals(character.id);
+        Affiche affiche = (Affiche) o;
+        return getId().equals(affiche.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
     @Override
     public String toString() {
-        return "Character{" +
+        return "Affiche{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", createAt=" + createAt +
                 ", updateAt=" + updateAt +
                 ", opera=" + opera +
-                ", roleName='" + roleName + '\'' +
-                ", voice=" + voice +
+                ", dateAndTime=" + dateAndTime +
+                ", ticketPrice=" + ticketPrice +
                 '}';
     }
 }
